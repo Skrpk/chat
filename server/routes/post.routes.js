@@ -9,9 +9,9 @@ router.route('/users').get(UserController.getUsers);
 router.route('/users/:name').get(UserController.getUser);
 
 // Add a new Post
-router.route('/posts').post(UserController.addUser);
+router.route('/user').post(UserController.addUser);
 
 // Delete a post by cuid
-router.route('/posts/:cuid').delete(UserController.deleteUser);
+router.route('/users/:cuid').delete(UserController.deleteUser);
 
 export default router;

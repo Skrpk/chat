@@ -14,12 +14,24 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 // Initialize the Express App
 const app = new Express();
 
+const http = require('http').Server(app);  // eslint-disable-line
+const io = require('socket.io')(http);
+
 // Run Webpack dev server in development mode
 if (process.env.NODE_ENV === 'development') {
   const compiler = webpack(config);
   app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
   app.use(webpackHotMiddleware(compiler));
 }
+
+io.on('connection', (client) => {
+  client.on('message', (data) => {
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', data);
+  });
+  client.emit('message', { data: 'aaaaa' });
+});
+
+io.listen(8888);
 
 // React And Redux Setup
 import { configureStore } from '../client/store';
@@ -130,39 +142,6 @@ app.use((req, res, next) => {
       .end(renderFullPage(initialView, finalState));
   })
   .catch((error) => next(error));
-
-  // matchRoutes(routes, req.url, (err, redirectLocation, renderProps) => {
-  //   if (err) {
-  //     return res.status(500).end(renderError(err));
-  //   }
-  //
-  //   if (redirectLocation) {
-  //     return res.redirect(302, redirectLocation.pathname + redirectLocation.search);
-  //   }
-  //
-  //   if (!renderProps) {
-  //     return next();
-  //   }
-  //
-  //
-  //   return fetchComponentData(store, renderProps.components, renderProps.params)
-  //     .then(() => {
-  //       const initialView = renderToString(
-  //         <Provider store={store}>
-  //           <IntlWrapper>
-  //             <RouterContext {...renderProps} />
-  //           </IntlWrapper>
-  //         </Provider>
-  //       );
-  //       const finalState = store.getState();
-  //
-  //       res
-  //         .set('Content-Type', 'text/html')
-  //         .status(200)
-  //         .end(renderFullPage(initialView, finalState));
-  //     })
-  //     .catch((error) => next(error));
-  // });
 });
 
 // start app

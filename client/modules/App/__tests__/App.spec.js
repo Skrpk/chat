@@ -34,7 +34,6 @@ test('renders properly', t => {
 
 
   t.is(wrapper.find('Header').length, 1);
-  t.is(wrapper.find('Footer').length, 1);
   t.is(wrapper.find('Header').prop('toggleAddPost'), wrapper.instance().toggleAddPostSection);
   t.truthy(wrapper.find('Header + main').hasClass(styles.container));
   t.truthy(wrapper.find('Header + main').children(), children);

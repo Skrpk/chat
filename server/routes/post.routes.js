@@ -1,17 +1,17 @@
 import { Router } from 'express';
-import * as PostController from '../controllers/post.controller';
+import * as UserController from '../controllers/user.controller';
 const router = new Router();
 
 // Get all Posts
-router.route('/posts').get(PostController.getPosts);
+router.route('/users').get(UserController.getUsers);
 
 // Get one post by cuid
-router.route('/posts/:cuid').get(PostController.getPost);
+router.route('/users/:name').get(UserController.getUser);
 
 // Add a new Post
-router.route('/posts').post(PostController.addPost);
+router.route('/posts').post(UserController.addUser);
 
 // Delete a post by cuid
-router.route('/posts/:cuid').delete(PostController.deletePost);
+router.route('/posts/:cuid').delete(UserController.deleteUser);
 
 export default router;

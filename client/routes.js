@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 
 import App from './modules/App/App';
-import PostListPage from './modules/Post/pages/PostListPage/PostListPage';
+import ChatPage from './modules/Chat/pages/ChatPage';
 import PostDetailPage from './modules/Post/pages/PostDetailPage/PostDetailPage';
 
 // require.ensure polyfill for node
@@ -17,6 +17,7 @@ if (typeof require.ensure !== 'function') {
  */
 if (process.env.NODE_ENV !== 'production') {
   // Require async routes only in development for react-hot-reloader to work.
+  require('./modules/Chat/pages/ChatPage');
   require('./modules/Post/pages/PostListPage/PostListPage');
   require('./modules/Post/pages/PostDetailPage/PostDetailPage');
 }
@@ -26,7 +27,7 @@ const routes = [
     routes: [
       { path: '/',
         exact: true,
-        component: PostListPage,
+        component: ChatPage,
       },
       { path: '/posts/:cuid',
         component: PostDetailPage,

@@ -6,8 +6,10 @@ import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import App from './App';
 import { configureStore } from './store';
+import { fromJS } from 'immutable';
 
 // Initialize store
+window.__INITIAL_STATE__.chat = fromJS(window.__INITIAL_STATE__.chat);
 const store = configureStore(window.__INITIAL_STATE__);
 const mountApp = document.getElementById('root');
 

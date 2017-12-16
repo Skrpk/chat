@@ -79,7 +79,6 @@ const renderFullPage = (html, initialState) => {
   // Import Manifests
   const assetsManifest = process.env.webpackAssets && JSON.parse(process.env.webpackAssets);
   const chunkManifest = process.env.webpackChunkAssets && JSON.parse(process.env.webpackChunkAssets);
-
   return `
     <!doctype html>
     <html>

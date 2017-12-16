@@ -7,13 +7,11 @@ const initialState = Map({
   username: '',
   messages: [],
 });
-debugger
+
 const ChatReducer = (state = initialState, action) => {
-  debugger
   switch (action.type) {
     case ADD_MESSAGES: {
-      debugger
-      state.set('messages', action.messages);
+      return state.set('messages', action.messages);
       break;
     }
     default:

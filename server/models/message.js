@@ -1,16 +1,10 @@
 import mongoose, { Schema } from 'mongoose';
-import User from './user';
+import { U1, U2 } from './user';
 
 const MessageSchema = new Schema({
   text: String,
   author: { type: Schema.Types.ObjectId, ref: 'User' },
 });
-
-const U1 = new User({ name: 'anton' });
-const U2 = new User({ name: 'vitali' });
-
-U1.save();
-U2.save();
 
 const MessageConstructor = mongoose.model('Message', MessageSchema);
 

@@ -95,6 +95,7 @@ const renderFullPage = (html, initialState) => {
       </head>
       <body>
         <div id="root">${html}</div>
+        <div id="modal-root"></div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
           ${process.env.NODE_ENV === 'production' ?

@@ -9,6 +9,7 @@ import styles from './App.css';
 import { Helmet } from 'react-helmet';
 import DevTools from './components/DevTools';
 import Header from './components/Header/Header';
+import Modal from '../Modal/components/Modal';
 
 // Import Actions
 import { toggleAddPost } from './AppActions';
@@ -27,6 +28,9 @@ export class App extends Component {
   toggleAddPostSection = () => {
     this.props.dispatch(toggleAddPost());
   };
+
+  renderModal = () =>
+    this.props.username ? null : <Modal />
 
   render() {
     return (
@@ -56,6 +60,7 @@ export class App extends Component {
           <main className={styles.container}>
             {renderRoutes(this.props.route.routes)}
           </main>
+          {this.renderModal()}
         </div>
       </div>
     );
@@ -66,12 +71,14 @@ App.propTypes = {
   route: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
+  username: PropTypes.string.isRequired,
 };
 
 // Retrieve data from store as props
 function mapStateToProps(store) {
   return {
     intl: store.intl,
+    username: store.modal.get('username'),
   };
 }
 

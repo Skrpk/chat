@@ -10,6 +10,7 @@ import { fromJS } from 'immutable';
 
 // Initialize store
 window.__INITIAL_STATE__.chat = fromJS(window.__INITIAL_STATE__.chat);
+window.__INITIAL_STATE__.modal = fromJS(window.__INITIAL_STATE__.modal);
 const store = configureStore(window.__INITIAL_STATE__);
 const mountApp = document.getElementById('root');
 

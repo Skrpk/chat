@@ -12,7 +12,6 @@ const ChatReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_MESSAGES: {
       return state.set('messages', action.messages);
-      break;
     }
     default:
       return state;

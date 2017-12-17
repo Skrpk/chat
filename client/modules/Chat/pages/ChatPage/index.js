@@ -15,11 +15,20 @@ class ChatPage extends React.Component {
     this.props.fetchMessages();
   }
 
+  renderMessages = () =>
+    this.props.messages.map((message, index) =>(
+      <Message
+        name={message.author.name}
+        message={message.text}
+        key={Math.random(index)}
+      />
+    ))
+
   render() {
     return (
       <div className={styles.chat}>
         <div className={styles.messages}>
-          <Message />
+          {this.renderMessages()}
         </div>
         <MessageInput />
       </div>
@@ -28,7 +37,7 @@ class ChatPage extends React.Component {
 }
 
 const mapStateToProps = store => ({
-
+  messages: store.chat.get('messages'),
 }); 
 
 const mapDispatchToProps = dispatch => ({

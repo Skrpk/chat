@@ -11,7 +11,6 @@ import {
 function* getMessagesRequest() {
   try {
     const messages = yield call(callApi, 'messages');
-    debugger
     yield put(addMessages(messages));
   } catch ({ message }) {
     console.error(message);

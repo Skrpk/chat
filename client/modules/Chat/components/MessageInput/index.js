@@ -9,14 +9,22 @@ const MessageInput = (props) => {
       <textarea
         className={styles.textarea}
         rows="3"
+        onChange={props.onChangeInput}
+        value={props.value}
       ></textarea>
-      <span className={styles.submit}>SEND</span>
+      <span
+        className={styles.submit}
+        onClick={() => props.send(props.value)}
+      >SEND</span>
     </div>
   );
 };
 
 MessageInput.propTypes = {
   name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChangeInput: PropTypes.func.isRequired,
+  send: PropTypes.func.isRequired,
 };
 
 export default MessageInput;

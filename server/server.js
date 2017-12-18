@@ -10,6 +10,7 @@ import webpack from 'webpack';
 import config from '../webpack.config.dev';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+import ClientsObservable from './controllers/connection.controller';
 
 // Initialize the Express App
 const app = new Express();
@@ -25,10 +26,11 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 io.on('connection', (client) => {
+  ClientsObservable.addListener(client);
+
   client.on('message', (data) => {
-    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', data);
+    ClientsObservable.sendMessage(data);
   });
-  client.emit('message', { data: 'aaaaa' });
 });
 
 io.listen(8888);

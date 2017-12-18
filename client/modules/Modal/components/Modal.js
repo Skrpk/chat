@@ -8,7 +8,9 @@ import styles from './style.css';
 import {
   setUsername,
 } from '../modalActions';
-
+import {
+  fetchMessages,
+} from '../../Chat/ChatActions';
 
 const modalRoot = global.document ? document.getElementById('modal-root') : null;
 
@@ -24,6 +26,7 @@ class Modal extends React.Component {
 
   componentDidMount() {
     modalRoot.appendChild(this.el);
+    this.props.fetchMessages();
   }
 
   componentWillUnmount() {
@@ -63,6 +66,7 @@ class Modal extends React.Component {
 
 Modal.propTypes = {
   setUsername: PropTypes.func.isRequired,
+  fetchMessages: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -71,6 +75,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setUsername: (username) => dispatch(setUsername(username)),
+  fetchMessages: () => dispatch(fetchMessages()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);

@@ -6,14 +6,7 @@ import Message from '../../components/Message';
 import MessageInput from '../../components/MessageInput';
 import styles from './style.css';
 
-import {
-  fetchMessages,
-} from '../../ChatActions';
-
 class ChatPage extends React.Component {
-  componentDidMount() {
-    this.props.fetchMessages();
-  }
 
   renderMessages = () =>
     this.props.messages.map((message, index) =>(
@@ -41,7 +34,6 @@ const mapStateToProps = store => ({
 }); 
 
 const mapDispatchToProps = dispatch => ({
-  fetchMessages: () => dispatch(fetchMessages()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatPage);

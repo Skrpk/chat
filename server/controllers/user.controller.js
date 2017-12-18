@@ -23,20 +23,20 @@ export function getUsers(req, res) {
  * @returns void
  */
 export function addUser(req, res) {
-  if (!req.body.user.name) {
+  if (!req.body.name) {
     res.status(403).end();
   }
 
-  const newUser = new User(req.body.user);
+  const newUser = new User(req.body);
 
   // Let's sanitize inputs
   newUser.name = sanitizeHtml(newUser.name);
 
-  newUser.save((err, saved) => {
+  newUser.save((err) => {
     if (err) {
       res.status(500).send(err);
     }
-    res.json({ user: saved });
+    res.json({ name: newUser.name });
   });
 }
 

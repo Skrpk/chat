@@ -18,11 +18,11 @@ import { getPosts } from '../../PostReducer';
 class PostListPage extends Component {
   componentDidMount() {
     this.props.dispatch(fetchPosts());
-    const socket = openSocket('http://localhost:8888');
+    /*const socket = openSocket('http://localhost:8888');
     socket.on('message', data => {
       console.log('!!!!!!!!!!', data);
       socket.emit('message', { data: 'bbbbbbbb' });
-    });
+    });*/
   }
 
   handleDeletePost = post => {

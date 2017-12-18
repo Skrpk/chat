@@ -18,12 +18,7 @@ const ChatReducer = (state = initialState, action) => {
       return state.set('username', action.username);
     }
     case ADD_MESSAGE: {
-      return state.updateIn(['messages'], array => {
-        array.push(action.message);
-        const a = [...array];
-        a.push(action.message);
-        return a;
-      });
+      return state.updateIn(['messages'], array => array.concat(action.message));
     }
     default:
       return state;

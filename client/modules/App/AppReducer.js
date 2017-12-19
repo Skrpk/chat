@@ -1,27 +1,23 @@
-// Import Actions
-import { TOGGLE_ADD_POST } from './AppActions';
+import { Map } from 'immutable';
 
-// Initial State
-const initialState = {
-  showAddPost: false,
-};
+import {
+  SET_USERNAME,
+} from './constants';
+
+const initialState = Map({
+  username: '',
+});
 
 const AppReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TOGGLE_ADD_POST:
-      return {
-        showAddPost: !state.showAddPost,
-      };
+    case SET_USERNAME: {
+      return state.set('username', action.username);
+    }
 
     default:
       return state;
   }
 };
-
-/* Selectors */
-
-// Get showAddPost
-export const getShowAddPost = state => state.app.showAddPost;
 
 // Export Reducer
 export default AppReducer;

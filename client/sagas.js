@@ -3,11 +3,11 @@ import { fork } from 'redux-saga/effects';
 
 import rootPostSaga from './modules/Post/postSagas';
 import rootChatSaga from './modules/Chat/ChatSagas';
-import rootModalSaga from './modules/Modal/ModalSagas';
+import rootAppSaga from './modules/App/AppSagas';
 
 export default function* rootSaga() {
   yield [
     fork(rootChatSaga),
-    fork(rootModalSaga),
+    fork(rootAppSaga),
   ];
 }

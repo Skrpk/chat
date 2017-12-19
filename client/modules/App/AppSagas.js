@@ -22,7 +22,7 @@ function* getMessageSaga() {
   yield takeEvery(SET_USERNAME_REQUEST, getMessagesRequest);
 }
 
-export default function* rootChatSaga() {
+export default function* rootAppSaga() {
   yield all([
     fork(getMessageSaga),
   ]);

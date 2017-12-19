@@ -7,10 +7,10 @@ import styles from './style.css';
 
 import {
   setUsername,
-} from '../modalActions';
+} from '../../AppActions';
 import {
   fetchMessages,
-} from '../../Chat/ChatActions';
+} from '../../../Chat/ChatActions';
 
 const modalRoot = global.document ? document.getElementById('modal-root') : null;
 

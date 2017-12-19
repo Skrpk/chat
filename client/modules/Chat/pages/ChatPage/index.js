@@ -42,7 +42,7 @@ class ChatPage extends React.Component {
     return (
       <div className={styles.chat}>
         <div className={styles.messages}>
-          {this.renderMessages()}
+          {this.props.name && this.renderMessages()}
         </div>
         <MessageInput
           name={this.props.name}

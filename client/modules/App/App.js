@@ -9,7 +9,7 @@ import styles from './App.css';
 import { Helmet } from 'react-helmet';
 import DevTools from './components/DevTools';
 import Header from './components/Header/Header';
-import Modal from '../Modal/components/Modal';
+import Modal from './components/Modal/Modal';
 
 // Import Actions
 import { toggleAddPost } from './AppActions';
@@ -78,7 +78,7 @@ App.propTypes = {
 function mapStateToProps(store) {
   return {
     intl: store.intl,
-    username: store.modal.get('username'),
+    username: store.app.get('username'),
   };
 }
 

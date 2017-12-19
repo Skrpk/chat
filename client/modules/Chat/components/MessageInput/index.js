@@ -11,6 +11,7 @@ const MessageInput = (props) => {
         rows="3"
         onChange={props.onChangeInput}
         value={props.value}
+        onKeyDown={(e) => e.keyCode === 13 && props.send(props.value)}
       ></textarea>
       <span
         className={styles.submit}
